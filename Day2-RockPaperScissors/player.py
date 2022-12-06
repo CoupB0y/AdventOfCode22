@@ -1,10 +1,10 @@
 
 class Player:
-    """Player class
-    """
+    """Player class that stores the score of the player"""
+    
     def __init__(self):
-        """Constructor for Player class
-        """
+        """Constructor for Player class"""
+        
         self.score = 0
         
     def getScore(self):
@@ -14,7 +14,3 @@ class Player:
             int: returns Player score
         """
         return self.score
-    
-    def setScore(self, score):
-        """Sets the score"""
-        self.score = score

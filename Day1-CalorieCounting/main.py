@@ -3,26 +3,46 @@ from itertools import groupby
 
 
 def readTextFromFile(filename):
+    """Reads text from a file and returns it as a string
+
+    Args:
+        filename (String): filename to read from
+
+    Returns:
+        String: contents of the file
+    """
+    
     with open(filename, 'r') as f:
         return f.read()
     
-
-''' 
-finds elf carrying the most calories 
-used in pt1
-'''   
+  
 def getMaxCalories(elves):
+    """Finds the elf carrying the most calories
+
+    Args:
+        elves (list): List Elf objects
+
+    Returns:
+        int: Total calories carried by the elf wih the most calories
+    """
+    
     maxCalories = 0
     for elf in elves:
         if elf.getTotalCalories() > maxCalories:
             maxCalories = elf.getTotalCalories()
     return maxCalories
 
-'''
-returns list of top three elves with most calories
-used in pt2
-'''
+
 def getTopThree(elves):
+    """Returns the top three elves carrying the most calories
+
+    Args:
+        elves (list): list of Elf objects
+
+    Returns:
+        list: list of top three Elf objects carrying the most calories
+    """
+    
     topThree = []
     for elf in elves:
         if len(topThree) < 3:
@@ -36,6 +56,8 @@ def getTopThree(elves):
 
 
 def main():
+    """Main function that reads the input file and creates Elf objects"""
+    
     elves = []
     fileData = readTextFromFile("calorie_count.txt").splitlines()
     calorielList = [list(g) for k, g in groupby(fileData, key=bool) if k]

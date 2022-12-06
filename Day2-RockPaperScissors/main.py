@@ -10,6 +10,7 @@ def readTextFromFile(filename):
     Returns:
         String: contents of the file
     """
+    
     with open(filename, 'r') as f:
         return f.read()
 
@@ -21,6 +22,7 @@ def determineOutcome1(strategyList, player): # used in pt1
         strategyList (list): list of move strategies for the Player
         player (Player): Player object
     """
+    
     userMoveScores = {'X': 1 , 'Y': 2, 'Z': 3}
     
     for round in strategyList: 
@@ -38,8 +40,10 @@ def determineOutcome1(strategyList, player): # used in pt1
             player.score += 3
             player.score += userMoveScores[roundList[1]]         
 
+
 def determineOutcome2(strategyList, player): # used in pt2 
     """Determines the outcome of the game using pt2 strategy and adds to the Player's score
+    
     Args:
         strategyList (list): list of move strategies for the Player
         player (Player): Player object
@@ -76,16 +80,18 @@ def determineOutcome2(strategyList, player): # used in pt2
 
 
 def main():
-    """Main function
-    """
+    """Main function that reads the input file and cretaes Player objects"""
     
-    player = Player()
+    player1 = Player()
+    player2 = Player()
     fileData = readTextFromFile('strategy_guide.txt')
     strategyList = fileData.splitlines()
-    # determineOutcome1(strategyList, player)
-    determineOutcome2(strategyList, player)
+    
+    determineOutcome1(strategyList, player1)
+    determineOutcome2(strategyList, player2)
 
-    print(f"Total Score: {player.getScore()}")
+    print(f"Part 1 Score: {player1.getScore()}")
+    print(f"Part 2 Score: {player2.getScore()}")
 
 
 if __name__ == '__main__':
